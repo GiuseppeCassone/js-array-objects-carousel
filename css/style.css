@@ -7,11 +7,21 @@
 
 .row, .col-9, .col-3{
     height: 500px;
-    border: 1px solid black;
 }
 
 .col-12{
     height: calc(100% / 5);
-    border: 1px solid black;
 }
 /* TEST */
+
+.fa-circle-chevron-up{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+}
+
+.fa-circle-chevron-down{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+}
