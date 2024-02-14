@@ -18,10 +18,20 @@
     position: absolute;
     top: 10px;
     left: 50%;
+    transform: translate(-50%);
 }
 
 .fa-circle-chevron-down{
     position: absolute;
     bottom: 10px;
     left: 50%;
+    transform: translate(-50%);
+}
+
+.mySlide{
+    display: none;
+}
+
+.mySlide.active{
+    display: block;
 }
