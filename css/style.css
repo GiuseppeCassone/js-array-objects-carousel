@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* RESET */
+
+.row, .col-9, .col-3{
+    height: 500px;
+    border: 1px solid black;
+}
+
+.col-12{
+    height: calc(100% / 5);
+    border: 1px solid black;
+}
+/* TEST */
