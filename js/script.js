@@ -58,13 +58,15 @@ for(let i = 0; i < images.length; i++) {
     sliderElement.innerHTML += `
     <figure class="mySlide w-100 h-100">
         <img class="img-fluid object-fit-cover w-100 h-100" src="./${img}">
-        <h2>${imgTitle}</h2>
-        <p>${imgText}</p>
+        <div class="slide-text">
+            <h2>${imgTitle}</h2>
+            <p>${imgText}</p>
+        </div>
     </figure>
     `;
 
     thumbnailsElement.innerHTML += `
-    <div class="col-12">
+    <div class="col-12 myThumbnail">
         <img src="./${img}" class="img-fluid object-fit-cover w-100 h-100" alt="...">
     </div>
     `;

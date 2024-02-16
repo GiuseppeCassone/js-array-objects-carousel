@@ -29,9 +29,17 @@
 }
 
 .mySlide{
+    position: relative;
     display: none;
 }
 
 .mySlide.active{
     display: block;
+}
+
+.mySlide .slide-text{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
 }
