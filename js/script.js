@@ -56,137 +56,64 @@ for(let i = 0; i < images.length; i++) {
 
 
     sliderElement.innerHTML += `
-    <div class="mySlide w-100 h-100">
+    <figure class="mySlide w-100 h-100">
         <img class="img-fluid object-fit-cover w-100 h-100" src="./${img}">
         <h2>${imgTitle}</h2>
         <p>${imgText}</p>
+    </figure>
+    `;
+
+    thumbnailsElement.innerHTML += `
+    <div class="col-12">
+        <img src="./${img}" class="img-fluid object-fit-cover w-100 h-100" alt="...">
     </div>
     `;
 }
 
 
-function showSlide(activate){
-    
-    const arraySlides = document.getElementsByClassName(`mySlide`);
-    // arraySlides[0].className += " active";
+document.querySelector(".mySlide:nth-of-type(1)").classList.add("active");
 
-    if (activate >= images.length) {
-        activate = 0;
-    } else if (activate < 0) {
-        activate = images.length -1;
-    }
-    
-    for(let i = 0; i < images.length; i++) {
-        if(i === activate){
-             arraySlides[i].classList.add("active");
-        } else {
-            arraySlides[i].classList.remove("active");
-        }
-    }
-
-    arraySlides[activate].classList.add("active");
-    console.log(activeSlide);
-}
-
-let activeSlide = 0;
-showSlide(activeSlide);
-
+let slideNumber = 1;
 
 document.querySelector(".fa-circle-chevron-down").addEventListener("click", function() {
-    activeSlide++;
-    showSlide(activeSlide);
-});
-
-document.querySelector(".fa-circle-chevron-up").addEventListener("click", function() {
-    activeSlide--;
-    showSlide(activeSlide);
-});
 
 
+    if (slideNumber < images.length) {
 
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
+        slideNumber++;
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
 
+        console.log(slideNumber);
 
+    } else {
+ 
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
+        slideNumber = 1;
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// arraySlides[0].classList.add("active");
-
-// let slideNumber = 0;
-
-// document.querySelector(".fa-circle-chevron-down").addEventListener("click", function() {
-
-
-//     if (slideNumber < images.length) {
-
-//         // - prendo l'immagine attuale e le rimuovo la classe "active"  
-//         arraySlides[slideNumber].classList.remove("active");
-
-//         // - aumento il contatore di 1
-//         slideNumber++;
-
-//         // - prendo l'immagine con il nuovo contatore e le aggiungo la classe "active"
-//         arraySlides[slideNumber].classList.add("active");
-
-//         console.log(slideNumber);
-
-//     } else {
-
-//         // - prendo l'immagine attuale e le rimuovo la classe "active"  
-//         arraySlides[slideNumber].classList.remove("active");
-
-//         // resetto la variabile che mi conta l'immagine a cui sono arrivato
-//         slideNumber = 0;
-
-//         // // - prendo l'immagine con il nuovo contatore e le aggiungo la classe "active"
-//         arraySlides[slideNumber].classList.add("active");
-
-//     }
+    }
 
         
-// });
+});
 
 
-// document.querySelector(".fa-circle-chevron-up").addEventListener("click", function() {
+document.querySelector(".fa-circle-chevron-up").addEventListener("click", function() {
 
-//     if (slideNumber < images.length) {
-//         // - prendo l'immagine attuale e le rimuovo la classe "active"  
-//         arraySlides[slideNumber].classList.remove("active");
+    if (slideNumber > 1) {
 
-//         // - diminuisco il contatore di 1
-//         slideNumber++;
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
+        slideNumber--;
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
 
-//         // - prendo l'immagine con il nuovo contatore e le aggiungo la classe "active"
-//         arraySlides[slideNumber].classList.add("active");
+        console.log(slideNumber);
 
-//         console.log(slideNumber);
+    } else {
 
-//     } else {
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
+        slideNumber = images.length;
+        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
 
-//         // - prendo l'immagine attuale e le rimuovo la classe "active"  
-//         arraySlides[slideNumber].classList.remove("active");
+    }
 
-//         // - metto il valore di slideNumebr = alla posizione dell'ultima immagine
-//         slideNumber = 0;
-
-//         // - prendo l'immagine con il nuovo contatore e le aggiungo la classe "active"
-//         arraySlides[slideNumber].classList.add("active");
-
-//     }
-    
-
-
-// });
+});
