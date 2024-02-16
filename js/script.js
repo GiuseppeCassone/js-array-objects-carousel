@@ -155,7 +155,7 @@ reverseButton.addEventListener("click", reverseAutoplay);
 
 function startAutoplay() {
     if (!autoplayEnabled) {
-        autoplayInterval = setInterval(changeSlideAutomatically, 3000); // Change slide every 3 seconds
+        autoplayInterval = setInterval(changeSlideAutomatically, 3000);
         autoplayEnabled = true;
     }
 }
