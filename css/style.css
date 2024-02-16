@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 /* RESET */
+body{
+    background-color: lightgrey;
+}
 
 .row, .col-9, .col-3{
     height: 500px;
@@ -42,4 +45,12 @@
     bottom: 10px;
     left: 10px;
     color: white;
+}
+
+.myThumbnail:not(.active){
+    opacity: 0.6;
+}
+
+.myThumbnail.active{
+    border: 3px white solid;
 }

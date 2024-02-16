@@ -47,6 +47,7 @@ const images = [
 
 const sliderElement = document.getElementById(`slider`);
 const thumbnailsElement = document.getElementById(`thumbnails`);
+let slideNumber = 1;
 
 for(let i = 0; i < images.length; i++) {
     const img = images[i].image;
@@ -72,27 +73,20 @@ for(let i = 0; i < images.length; i++) {
     `;
 }
 
-
-document.querySelector(".mySlide:nth-of-type(1)").classList.add("active");
-
-let slideNumber = 1;
+showSlide(1)
 
 document.querySelector(".fa-circle-chevron-down").addEventListener("click", function() {
 
 
     if (slideNumber < images.length) {
 
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
         slideNumber++;
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
-
-        console.log(slideNumber);
+        showSlide(slideNumber);
 
     } else {
- 
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
+
         slideNumber = 1;
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
+        showSlide(slideNumber);
 
     }
 
@@ -104,18 +98,92 @@ document.querySelector(".fa-circle-chevron-up").addEventListener("click", functi
 
     if (slideNumber > 1) {
 
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
         slideNumber--;
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
-
-        console.log(slideNumber);
+        showSlide(slideNumber);
 
     } else {
 
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.remove("active");
         slideNumber = images.length;
-        document.querySelector(`#slider .mySlide:nth-of-type(${slideNumber})`).classList.add("active");
+        showSlide(slideNumber);
 
     }
 
 });
+
+const thumbnailsElements = document.querySelectorAll("#thumbnails .myThumbnail");
+
+thumbnailsElements.forEach(((currentThumbnail, index) => {
+
+    currentThumbnail.addEventListener("click", () => {
+
+        slideNumber = index + 1;    
+
+        showSlide(slideNumber);
+    })
+
+}));
+
+function showSlide(number) {
+
+    const slides = document.querySelectorAll(".mySlide");
+    slides.forEach(currentSlide => {
+        currentSlide.classList.remove("active")
+    }) 
+
+    document.querySelector(`#slider .mySlide:nth-of-type(${number})`).classList.add("active");
+
+    const thumbs = document.querySelectorAll(".myThumbnail");
+    thumbs.forEach(thumb => {
+        thumb.classList.remove("active");
+    })
+
+    document.querySelector(`.myThumbnail:nth-of-type(${number + 1})`).classList.add("active");
+};
+
+
+const playButton = document.querySelector("#play-button");
+const pauseButton = document.querySelector("#pause-button");
+const reverseButton = document.querySelector("#reverse-button");
+
+let autoplayInterval;
+let autoplayEnabled = false;
+let autoplayReverse = false;
+
+playButton.addEventListener("click", startAutoplay);
+pauseButton.addEventListener("click", stopAutoplay);
+reverseButton.addEventListener("click", reverseAutoplay);
+
+function startAutoplay() {
+    if (!autoplayEnabled) {
+        autoplayInterval = setInterval(changeSlideAutomatically, 3000); // Change slide every 3 seconds
+        autoplayEnabled = true;
+    }
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+    autoplayEnabled = false;
+}
+
+function reverseAutoplay() {
+    autoplayReverse = !autoplayReverse;
+}
+
+function changeSlideAutomatically() {
+    if (autoplayReverse) {
+        if (slideNumber === 1) {
+            slideNumber = images.length;
+        } else {
+            slideNumber--;
+        }
+    } else {
+        if (slideNumber === images.length) {
+            slideNumber = 1;
+        } else {
+            slideNumber++;
+        }
+    }
+    showSlide(slideNumber);
+}
+
+ 

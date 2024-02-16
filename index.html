@@ -13,23 +13,33 @@
 
     <div class="container pt-5">
 
-       <div class="row overflow-hidden rounded-4 shadow">
+        <div class="row overflow-hidden rounded-4 shadow">
         
-        <div class="col-9 p-0 overflow-hidden" id="slider">
-            
+            <div class="col-9 p-0 overflow-hidden" id="slider">
+                
+            </div>
+
+            <div class="col-3 p-0 overflow-hidden position-relative" id="thumbnails">
+
+                <div id="arrows" class="text-white fs-4">
+                    <i class="fa-solid fa-circle-chevron-up"></i>
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </div>
+
+            </div>
+
+        
         </div>
 
-        <div class="col-3 p-0 overflow-hidden position-relative" id="thumbnails">
+        <div class="d-flex justify-content-center mt-5">
 
-            <div id="arrows" class="text-white fs-4">
-                <i class="fa-solid fa-circle-chevron-up"></i>
-                <i class="fa-solid fa-circle-chevron-down"></i>
+            <div id="buttons" class="d-flex gap-2 ">
+                <button id="play-button" class="btn btn-success">Play</button>
+                <button id="pause-button" class="btn btn-danger">Pausa</button>
+                <button id="reverse-button" class="btn btn-secondary">Reverse</button>
             </div>
 
         </div>
-
-       </div>
-        
 
     </div>
 
