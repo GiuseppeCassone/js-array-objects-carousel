@@ -73,11 +73,14 @@ for(let i = 0; i < images.length; i++) {
     `;
 }
 
+// Mostra la prima slide all'avvio
 showSlide(1)
+
+// Aggiunta dell' event listener per il click sulle frecce del carosello
 
 document.querySelector(".fa-circle-chevron-down").addEventListener("click", function() {
 
-
+// Incrementa il numero della slide attiva se possibile, altrimenti torna alla prima slide
     if (slideNumber < images.length) {
 
         slideNumber++;
@@ -96,6 +99,7 @@ document.querySelector(".fa-circle-chevron-down").addEventListener("click", func
 
 document.querySelector(".fa-circle-chevron-up").addEventListener("click", function() {
 
+// Decrementa il numero della slide attiva se possibile, altrimenti torna alla prima slide
     if (slideNumber > 1) {
 
         slideNumber--;
@@ -110,6 +114,7 @@ document.querySelector(".fa-circle-chevron-up").addEventListener("click", functi
 
 });
 
+// Selezione delle thumbnail e aggiunto l'event listener per le stesse
 const thumbnailsElements = document.querySelectorAll("#thumbnails .myThumbnail");
 
 thumbnailsElements.forEach(((currentThumbnail, index) => {
@@ -123,6 +128,7 @@ thumbnailsElements.forEach(((currentThumbnail, index) => {
 
 }));
 
+// Funzione che permette la visualizzazione corretta delle slide e dei thumbnail
 function showSlide(number) {
 
     const slides = document.querySelectorAll(".mySlide");
@@ -140,19 +146,24 @@ function showSlide(number) {
     document.querySelector(`.myThumbnail:nth-of-type(${number + 1})`).classList.add("active");
 };
 
+// Inizio della parte dove creo le funzioni per il funzionamento del carosello in base al click dei bottoni
 
+// Bersaglio gli elementi HTML 
 const playButton = document.querySelector("#play-button");
 const pauseButton = document.querySelector("#pause-button");
 const reverseButton = document.querySelector("#reverse-button");
 
+// Inizializzo le variabili per i diversi autoplay
 let autoplayInterval;
 let autoplayEnabled = false;
 let autoplayReverse = false;
 
+// Inserito l'event listener al click dei bottoni per le corrispettive funzioni
 playButton.addEventListener("click", startAutoplay);
 pauseButton.addEventListener("click", stopAutoplay);
 reverseButton.addEventListener("click", reverseAutoplay);
 
+// Creo la funzione di autoplay del carosello che cambia slide ogni 3 secondi
 function startAutoplay() {
     if (!autoplayEnabled) {
         autoplayInterval = setInterval(changeSlideAutomatically, 3000);
@@ -160,15 +171,19 @@ function startAutoplay() {
     }
 }
 
+
+// Creo la funzione che permette di stoppare l'autoplay
 function stopAutoplay() {
     clearInterval(autoplayInterval);
     autoplayEnabled = false;
 }
 
+// Funzione che permette di invertire l'ordine di visualizzazione delle slide
 function reverseAutoplay() {
     autoplayReverse = !autoplayReverse;
 }
 
+// Funzione che permette di passare alla slide successiva corretta sia nel funzionamento regolare sia in quello inverso
 function changeSlideAutomatically() {
     if (autoplayReverse) {
         if (slideNumber === 1) {
@@ -185,5 +200,8 @@ function changeSlideAutomatically() {
     }
     showSlide(slideNumber);
 }
+
+// Richiamo la funzione per far partire l'autoplay al caricamento della pagina
+startAutoplay();
 
  
