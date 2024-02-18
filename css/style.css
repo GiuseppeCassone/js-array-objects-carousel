@@ -5,11 +5,16 @@
 }
 /* RESET */
 body{
-    background-color: lightgrey;
+    background-color: rgb(4, 51, 78);
 }
 
 .row, .col-9, .col-3{
     height: 500px;
+}
+
+.row{
+    border: 1px solid white;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .col-12{
@@ -17,19 +22,6 @@ body{
 }
 /* TEST */
 
-.fa-circle-chevron-up{
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translate(-50%);
-}
-
-.fa-circle-chevron-down{
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%);
-}
 
 .mySlide{
     position: relative;
@@ -53,4 +45,24 @@ body{
 
 .myThumbnail.active{
     border: 3px white solid;
+}
+
+.fa-circle-chevron-up{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.fa-circle-chevron-down{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
 }
